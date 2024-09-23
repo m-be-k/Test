@@ -4,6 +4,16 @@ for (let i = 1; i <= 10; i++) {
         const div = document.createElement('div')
         div.textContent = i * j;
         taible.append(div);
-        div.setAttribute('class','grid-stile');
+        div.setAttribute('class', 'grid-stile');
+        if (i === j) {
+            div.setAttribute('class', 'diagonal');
+        }
+        if (i === 1 || j === 1) {
+            div.setAttribute('class', 'blue');
+        }
+        if( i>j){
+            div.setAttribute('class','red');
+
+        }
     }
 }
