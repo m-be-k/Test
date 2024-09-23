@@ -4,16 +4,28 @@ for (let i = 1; i <= 10; i++) {
         const div = document.createElement('div')
         div.textContent = i * j;
         taible.append(div);
-        div.setAttribute('class', 'grid-stile');
-        if (i === j) {
-            div.setAttribute('class', 'diagonal');
+        // div.setAttribute('class', 'grid-stile');
+        // if (i === j) {
+        //     div.setAttribute('class', 'diagonal');
+        // }
+        // if (i === 1 || j === 1) {
+        //     div.setAttribute('class', 'blue');
+        // }
+        // if( i>j){
+        //     div.setAttribute('class','red');
+        //
+        // }
+        if (i === 1||j===1) {
+            div.classList.add('diagonal');
         }
-        if (i === 1 || j === 1) {
-            div.setAttribute('class', 'blue');
+        else if(i===j){
+            div.classList.add('blue');
         }
-        if( i>j){
-            div.setAttribute('class','red');
-
+        else if (i>j){
+            div.classList.add('red');
+        }
+        else {
+            div.classList.add('orange');
         }
     }
 }
