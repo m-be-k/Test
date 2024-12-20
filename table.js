@@ -3,33 +3,25 @@ let matrix = [];
 //mouseenter - вхождение мышки в елемент
 //mouseleave - выход мышки из элемента
 for (let i = 1; i <= 10; i++) {
-    matrix[i-1] = [];
+    matrix[i - 1] = [];
     for (let j = 1; j <= 10; j++) {
         const div = document.createElement('div');
-        matrix[i-1][j-1]= div;
-        div.val = {
-            i:i-1,
-            j:j-1
-        }
-        // div.onclick = () =>{
-        //     console.log(div.val);
-        //     console.log(matrix[0][j-1]);
-        //     console.log(matrix[i-1][0]);
-        // }
-
         div.textContent = i * j;
+        matrix[i - 1][j - 1] = div;
         div.classList.add('grid-style');
         val.append(div);
-        div.onmouseenter = () => {
-            div.classList.add('white');
-            matrix[0][j-1].classList.add('white');
-            matrix[i-1][0].classList.add('white');
-        }
-        div.onmouseleave = () => {
-            div.classList.remove('white');
-            matrix[0][j-1].classList.remove('white');
-            matrix[i-1][0].classList.remove('white');
-        }
+
+        div.addEventListener('mouseenter', function () {
+            div.classList.add('blue-light');
+            matrix[0][j - 1].classList.add('blue-light');
+            matrix[i - 1][0].classList.add('blue-light');
+        });
+        div.addEventListener('mouseleave', function () {
+            div.classList.remove('blue-light');
+            matrix[0][j - 1].classList.remove('blue-light');
+            matrix[i - 1][0].classList.remove('blue-light');
+        });
+
         if (i === 1 || j === 1) {
             div.classList.add('blue-diagonal');
         } else if (i === j) {
@@ -96,3 +88,4 @@ console.log(matrix);
 // что бы сохронялись наши данные.
 // нужно хранить div's целеком.
 
+// ДЗ: переписать обработку событий в таблице умножения на eventListener-ы
