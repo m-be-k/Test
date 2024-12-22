@@ -10,17 +10,22 @@ for (let i = 1; i <= 10; i++) {
         matrix[i - 1][j - 1] = div;
         div.classList.add('grid-style');
         val.append(div);
-
-        div.addEventListener('mouseenter', function () {
-            div.classList.add('blue-light');
-            matrix[0][j - 1].classList.add('blue-light');
-            matrix[i - 1][0].classList.add('blue-light');
-        });
-        div.addEventListener('mouseleave', function () {
-            div.classList.remove('blue-light');
-            matrix[0][j - 1].classList.remove('blue-light');
-            matrix[i - 1][0].classList.remove('blue-light');
-        });
+        const obj = {
+            handleEvent(e) {
+                const type = e.type;
+                if (type === 'mouseenter') {
+                    div.classList.add('blue-light');
+                    matrix[0][j - 1].classList.add('blue-light');
+                    matrix[i - 1][0].classList.add('blue-light');
+                } else if (type === 'mouseleave') {
+                    div.classList.remove('blue-light');
+                    matrix[0][j - 1].classList.remove('blue-light');
+                    matrix[i - 1][0].classList.remove('blue-light');
+                }
+            }
+        };
+        div.addEventListener('mouseenter', obj);
+        div.addEventListener('mouseleave', obj);
 
         if (i === 1 || j === 1) {
             div.classList.add('blue-diagonal');
